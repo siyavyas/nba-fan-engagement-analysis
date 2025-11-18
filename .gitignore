@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# Data files (don't commit large datasets)
+*.csv
+*.xlsx
+*.json
+data/raw/*.csv
+data/processed/*.csv
+
+# Exception: keep small example/sample files
+!data/raw/sample_*.csv
+!data/processed/sample_*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model files (can be large)
+*.pkl
+*.h5
+*.pt
+*.pth
+
+# Results (keep structure, not files)
+results/**/*.png
+results/**/*.jpg
+results/**/*.pdf
+
+# Environment variables
+.env
+
+# Temporary files
+*.tmp
+*.log
