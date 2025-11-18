@@ -1,6 +1,11 @@
 """
 NBA Fan Engagement Analysis - Data Collection
 Collects Brooklyn Nets home game data from Basketball Reference (2022-2025 seasons)
+
+***This script is not working as expected. Initially attempted automated web scraping. 
+    Encountered 403 errors due to anti-scraping measures.
+    Pivoted to manual data collection approach.***
+    
 """
 
 import pandas as pd
