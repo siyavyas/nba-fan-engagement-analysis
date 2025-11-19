@@ -88,15 +88,13 @@ python src/train.py
 *[To be filled after modeling]*
 
 **Model Performance:**
-- Best Model: XGBoost
+- Best Model: X
 - Accuracy: X%
 - Weighted F1 Score: X
-- Key Features: is_weekend, opponent_star_power, nets_last_5_wins
+- Key Features: x
 
 **Business Recommendations:**
-1. Schedule high-profile matchups on weekend nights for maximum attendance
-2. Implement dynamic pricing for star opponent games
-3. Increase marketing spend during win streaks
+1. x
 
 ## Future Improvements
 
