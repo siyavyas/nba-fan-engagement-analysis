@@ -16,6 +16,7 @@ from sklearn.metrics import (
     classification_report, confusion_matrix
 )
 from xgboost import XGBClassifier
+from business_insights import generate_business_insights
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -77,7 +78,7 @@ def train_logistic_regression(X_train, X_test, y_train, y_test):
     """
     Uses scaled features
     """
-    print("\nModel configuration:")
+    print("\nLogistic Regression Model Configuration:")
     print("  max_iter=1000, random_state=42")
     print("  Using scaled features (required for logistic regression)")
     
@@ -107,7 +108,7 @@ def train_random_forest(X_train, X_test, y_train, y_test):
     Uses unscaled features
     """
     
-    print("\nModel configuration:")
+    print("\nRandom Forest Model Configuration:")
     print("  n_estimators=100")
     print("  max_depth=10")
     print("  min_samples_split=5")
@@ -149,7 +150,7 @@ def train_xgboost(X_train, X_test, y_train, y_test):
     Uses unscaled features
     """
     
-    print("\nModel configuration:")
+    print("\nXGBoost Model Configuration:")
     print("  n_estimators=100")
     print("  max_depth=5")
     print("  learning_rate=0.1")
@@ -346,7 +347,6 @@ def error_analysis(model, model_name, X_test, y_test, test_metadata):
     
     return error_df
 
-
 def create_visualizations(models, results, best_model, feature_imp_df, 
                          y_test, best_predictions, confusion_mat):
     os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -531,9 +531,9 @@ def main():
         best_model, best_model_name, X_test_best, y_test, test_metadata
     )
     
-    # generate_business_insights(
-    #    best_model, best_model_name, feature_imp_df, y_test, best_pred, config
-    #)
+    generate_business_insights(
+        best_model, best_model_name, feature_imp_df, y_test, best_pred, config
+    )
     
     # Step 10-11: Save outputs
     create_visualizations(
