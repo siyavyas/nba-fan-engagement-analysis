@@ -28,11 +28,25 @@ This project builds a classification model to predict attendance tiers (Low/Medi
 
 ## Key Findings
 
-*[To be filled after analysis]*
+### Model Performance
+- **Best Model**: Logistic Regression achieved **56.7% accuracy** with a weighted F1-score of **0.539**
+- **Improvement**: 173.6% improvement over baseline (baseline F1: 0.197)
+- **Model Comparison**:
+  - Logistic Regression: 56.7% accuracy, 0.539 F1-score
+  - Random Forest: 46.7% accuracy, 0.431 F1-score  
+  - XGBoost: 43.3% accuracy, 0.414 F1-score
 
-- Weekend games show X% higher attendance
-- Star opponent games (Lakers, Warriors, Celtics) boost attendance by X%
-- Model achieves X% accuracy (X% improvement over baseline)
+### Key Attendance Drivers
+- **Weekend games** show significantly higher attendance than weekday games
+- **Star opponent games** (Lakers, Warriors, Celtics) boost attendance substantially
+- **Rivalry games** (Knicks, Celtics, 76ers) drive increased fan engagement
+- **Day of week** and **season timing** are strong predictors of attendance levels
+- **Interaction effects** between weekend games and star opponents create premium attendance opportunities
+
+### Business Impact
+- Model enables accurate attendance tier prediction (Low/Medium/High) for 57% of games
+- Provides actionable insights for dynamic pricing, marketing, and staffing decisions
+- Potential revenue optimization through strategic scheduling and targeted promotions
 
 ## Project Structure
 ```
@@ -43,8 +57,11 @@ nba-fan-engagement-analysis/
 ├── notebooks/            # Jupyter notebooks for exploration
 ├── src/                  # Source code modules
 │   ├── data_collection.py
-│   ├── preprocessing.py
-│   └── train.py
+│   ├── eda_analysis.py
+│   ├── feature_engineering.py
+│   ├── train.py
+│   ├── business_insights.py
+│   └── process_manual_data.py
 ├── results/
 │   ├── eda/             # EDA visualizations
 │   └── models/          # Model outputs and metrics
@@ -75,26 +92,61 @@ python src/data_collection.py
 # Step 2: Run EDA
 python src/eda_analysis.py
 
-# Step 3: Train models
+# Step 3: Feature engineering
+python src/feature_engineering.py
+
+# Step 4: Train models
 python src/train.py
 
-# Step 4: View results
+# Step 5: View results
 # Check results/eda/ for visualizations
 # Check results/models/ for model performance metrics
 ```
 
 ## Results
 
-*[To be filled after modeling]*
+### Model Performance
 
-**Model Performance:**
-- Best Model: X
-- Accuracy: X%
-- Weighted F1 Score: X
-- Key Features: x
+**Best Model: Logistic Regression**
+- **Test Accuracy**: 56.7%
+- **Weighted F1-Score**: 0.539
+- **Baseline Comparison**: 173.6% improvement over baseline (baseline F1: 0.197)
 
-**Business Recommendations:**
-1. x
+**All Models Tested:**
+| Model | Accuracy | F1-Score | Improvement over Baseline |
+|-------|----------|----------|-------------------------|
+| Baseline | 36.7% | 0.197 | - |
+| Logistic Regression | **56.7%** | **0.539** | **173.6%** |
+| Random Forest | 46.7% | 0.431 | 118.8% |
+| XGBoost | 43.3% | 0.414 | 110.2% |
+
+**Key Features (Top Predictors):**
+- Weekend indicators (`is_weekend`, `is_fr_sat`)
+- Opponent characteristics (`is_star_opponent`, `is_rival`, `is_large_market`)
+- Interaction features (`weekend_star`, `weekend_rival`, `holiday_star`)
+- Temporal features (`day_of_week`, `month`, `season_phase`)
+
+### Business Recommendations
+
+**1. Scheduling Strategy:**
+- Prioritize weekend dates for marquee matchups (Lakers, Warriors, Celtics)
+- Schedule star opponents on Fridays/Saturdays to maximize attendance
+- Avoid Monday games when possible (lowest attendance)
+
+**2. Dynamic Pricing:**
+- Premium pricing for weekend + star opponent games
+- Promotional pricing for predicted Low attendance games
+- Mid-tier pricing for weekday non-rival games
+
+**3. Marketing & Promotions:**
+- Focus marketing budget on predicted Medium→High conversion games
+- Run promotions (bobbleheads, giveaways) on predicted Low games
+- Early bird discounts for weekday games
+
+**4. Staffing & Operations:**
+- Increase staff for predicted High attendance games
+- Reduce costs on predicted Low attendance games
+- Better concession/merchandise inventory planning
 
 ## Future Improvements
 
@@ -114,8 +166,6 @@ python src/train.py
 ## Author
 
 Siya Vyas
-
-**Created for**: Brooklyn Sports & Entertainment Digital Fellowship Application
 
 ## License
 
