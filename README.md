@@ -54,7 +54,8 @@ nba-fan-engagement-analysis/
 ├── data/
 │   ├── raw/              # Original scraped data
 │   └── processed/        # Cleaned, feature-engineered data
-├── notebooks/            # Jupyter notebooks for exploration
+├── notebooks/            # Jupyter notebooks
+│   └── nba_fan_engagement_analysis.ipynb  # Complete analysis notebook
 ├── src/                  # Source code modules
 │   ├── data_collection.py
 │   ├── eda_analysis.py
@@ -101,6 +102,9 @@ python src/train.py
 # Step 5: View results
 # Check results/eda/ for visualizations
 # Check results/models/ for model performance metrics
+
+# Alternative: Run complete analysis in Jupyter notebook
+jupyter notebook notebooks/nba_fan_engagement_analysis.ipynb
 ```
 
 ## Results
